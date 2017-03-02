@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<info>
+    <id>financier</id>
+    <name>Financier</name>
+    <description>A simple financial tracker</description>
+    <licence>GMT</licence>
+    <author>Michael Pollind</author>
+    <version>1.0.0</version>
+    <namespace>Financier</namespace>
+    <category>Productivity</category>
+    <dependencies>
+        <owncloud min-version="9.0.0" />
+    </dependencies>
+</info>
