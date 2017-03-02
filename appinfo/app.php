@@ -1,13 +1,15 @@
 <?php
+namespace OCA\Financier\AppInfo;
 
-require_once __DIR__ . '/autoload.php';
+\OC::$server->getNavigationManager()->add(function () {
+    $l = \OC::$server->getL10N('financier');
+    $g = \OC::$server->getURLGenerator();
 
-\OCA\Files\App::getNavigationManager()->add(function () {
-    $l = \OC::$server->getL10N('files');
     return [
         'id' => 'financier',
-        'appname' => 'Financier',
-        'order' => 0,
-        'name' => $l->t('All files'),
+        'order' => 100,
+        'href' => $g ->linkToRoute('financier.page.index'),
+        'icon' => $g ->imagePath('financier', 'app.svg'),
+        'name' => $l->t('Financier'),
     ];
 });

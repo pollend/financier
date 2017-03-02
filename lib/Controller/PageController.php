@@ -2,6 +2,7 @@
 
 namespace OCA\Financier\Controller;
 
+use OCP\IConfig;
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
@@ -12,9 +13,10 @@ class PageController extends Controller {
 
 	private $userId;
 
-	public function __construct($AppName, IRequest $request, $UserId){
+	public function __construct($AppName, IRequest $request, $userId, IConfig $config){
 		parent::__construct($AppName, $request);
-		$this->userId = $UserId;
+		$this->userId = $userId;
+		$this->config = $config;
 	}
 
 	/**
@@ -29,7 +31,7 @@ class PageController extends Controller {
 	 */
 	public function index() {
 		$params = ['user' => $this->userId];
-		return new TemplateResponse('Financier', 'main', $params);  // templates/main.php
+		return new TemplateResponse('financier', 'main');
 	}
 
 	/**

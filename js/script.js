@@ -1,4 +1,3 @@
-{% include app.small_license_header %}
 
 (function ($, OC) {
 
