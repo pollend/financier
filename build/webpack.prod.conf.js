@@ -7,7 +7,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-
+var ManifestPlugin = require('webpack-manifest-plugin');
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -51,6 +51,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
+    }),
+    new ManifestPlugin({
+        fileName: 'mix-manifest.json',
+        basePath:'/'
+
     })
   ]
 })

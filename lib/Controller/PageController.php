@@ -14,6 +14,7 @@ class PageController extends Controller {
 	private $userId;
 
 	public function __construct($AppName, IRequest $request, $userId, IConfig $config){
+
 		parent::__construct($AppName, $request);
 		$this->userId = $userId;
 		$this->config = $config;

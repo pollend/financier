@@ -11,7 +11,8 @@
   "dependencies": {
     "resolve-url-loader": "^2.0.1",
     "vue": "^2.2.1",
-    "vue-router": "^2.2.0"
+    "vue-router": "^2.2.0",
+    "webpack-manifest-plugin": "^1.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

@@ -1,4 +1,5 @@
 <?php
+var_dump(\OCA\Financier\MixHelper::getScript("financier",'script'));
 script('financier', 'node_modules/vue/dist/vue');
 style('financier', 'style');
 ?>

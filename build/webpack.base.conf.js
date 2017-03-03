@@ -52,7 +52,7 @@ module.exports = {
 			  loader: 'url-loader',
 			  query: {
 				  limit: 10000,
-				  name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+				  name: utils.assetsPath('css/fonts/[name].[hash:7].[ext]')
 			  }
 		  },
 		  {
@@ -60,6 +60,7 @@ module.exports = {
 			  loaders: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!resolve-url-loader!sass-loader?sourceMap=true' })
 
 		  }
+
 	  ]
   }
 }
