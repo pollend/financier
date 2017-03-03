@@ -4,11 +4,6 @@ script('financier', 'node_modules/vue/dist/vue');
 style('financier', 'style');
 ?>
 
-<div ng-app="Financier" ng-cloak ng-controller="AppController" id="app" class="handler">
-
-
-</div>
-
 <!---->
 <!--<div id="app">-->
 <!--	<div id="app-navigation">-->

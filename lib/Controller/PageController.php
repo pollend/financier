@@ -32,7 +32,7 @@ class PageController extends Controller {
 	 */
 	public function index() {
 		$params = ['user' => $this->userId];
-		return new TemplateResponse('financier', 'main');
+		return new TemplateResponse('financier', 'book.select');
 	}
 
 	/**
