@@ -1,9 +1,5 @@
+import './bootstrap'
 
-import Vue from 'vue'
-import $ from 'jquery'
-
-window.Vue = Vue
-window.jQuery = window.$ = $
 
 import BookEntry from './components/BookEntry.vue'
 
@@ -14,7 +10,3 @@ new Vue({
 		BookEntry
 	}
 })
-
-var x = 0
-x++
-
