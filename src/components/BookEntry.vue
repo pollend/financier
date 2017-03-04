@@ -1,0 +1,32 @@
+<template>
+	<div>TEST</div>
+</template>
+
+<script>
+	export default{
+		props: ['repository','user'],
+		data: function () {
+			return {"results": []}
+		},
+		created: function () {
+			this.fetchData();
+		},
+		methods: {
+			fetchData: function () {
+				var xhr = new XMLHttpRequest();
+				var self = this;
+				xhr.open('GET', githubAPIURL +"/repos/" + this.user + "/"+ this.repository + "/releases")
+				xhr.onload = function () {
+					var res = JSON.parse(xhr.responseText);
+					var reader = new commonmark.Parser();
+					var writer = new commonmark.HtmlRenderer();
+					for (var i = res.length - 1; i >= 0; i--) {
+						res[i].body = writer.render( reader.parse(res[i].body));
+					}
+					Vue.set(self, 'results', res);
+				};
+				xhr.send()
+			}
+		}
+	}
+</script>

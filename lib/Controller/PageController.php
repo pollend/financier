@@ -12,6 +12,7 @@ class PageController extends Controller {
 
 
 	private $userId;
+	private $config;
 
 	public function __construct($AppName, IRequest $request, $userId, IConfig $config){
 
@@ -33,14 +34,6 @@ class PageController extends Controller {
 	public function index() {
 		$params = ['user' => $this->userId];
 		return new TemplateResponse('financier', 'book.select');
-	}
-
-	/**
-	 * Simply method that posts back the payload of the request
-	 * @NoAdminRequired
-	 */
-	public function doEcho($echo) {
-		return new DataResponse(['echo' => $echo]);
 	}
 
 

@@ -8,7 +8,7 @@ namespace OCA\Financier\AppInfo;
     return [
         'id' => 'financier',
         'order' => 100,
-        'href' => $g ->linkToRoute('financier.page.index'),
+        'href' => $g ->linkToRoute('financier.book.index'),
         'icon' => $g ->imagePath('financier', 'app.svg'),
         'name' => $l->t('Financier'),
     ];
