@@ -1,5 +1,4 @@
-<?php
-namespace OCA\Financier\Controller;
+<?php  namespace OCA\Financier\Controller;
 use OCP\IConfig;
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -7,7 +6,7 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 
 
-class BookController extends Controller {
+class TransactionController extends Controller{
 
 	private $userId;
 	private $config;

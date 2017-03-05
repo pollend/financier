@@ -1,9 +1,9 @@
 <template>
-	<li><a>book</a></li>
+	<div>Transactions</div>
 </template>
 
 <script>
 	export default{
-		props: ['book']
+
 	}
 </script>

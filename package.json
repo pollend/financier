@@ -20,11 +20,15 @@
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.3.2",
     "bootstrap-sass": "^3.3.7",
+    "css-loader": "^0.26.2",
     "eslint-loader": "^1.6.3",
     "jquery": "^3.1.0",
     "lodash": "^4.16.2",
+    "translated": "^0.3.0",
     "vue": "^2.0.1",
-    "vue-loader": "^11.1.4"
+    "vue-loader": "^11.1.4",
+    "vue-router": "^2.3.0",
+    "vue-translated": "^0.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
