@@ -4,14 +4,13 @@
 			<ul>
 				<li><a>Summary</a></li>
 				<!--Books-->
-				<li><a>Book 1</a></li>
-				<li><a>Book 2</a></li>
-				<li><a>Book 3</a></li>
+				<book-entry  v-for="(book, index) in books" :book="book"></book-entry>
+
 				<!--Add Book-->
 				<li>
 					<a v-if="!showBook" v-on:click="AddBook()">+ Add Book</a>
-					<div v-if="showBook" class="app-navigation-entry-edit ng-scope">
-						<add-book></add-book>
+					<div v-else class="app-navigation-entry-edit ng-scope">
+						<add-book v-on:save="UpdateBookList()"></add-book>
 					</div>
 
 				</li>
@@ -26,12 +25,14 @@
 	import VueRouter from 'vue-router'
 	import AddBook from './components/AddBook.vue'
 	import BookEntry from './components/BookEntry.vue'
+	import  axios from 'axios'
 
 	export default {
 		name: 'app',
 		data: function(){
 			return {
-				showBook: false
+				showBook: false,
+				books :[]
 			}
 		},
 		components: {
@@ -46,6 +47,13 @@
 				this.showBook = true
 			},
 			UpdateBookList: function () {
+				this.showBook = false;
+
+				let temp = this;
+				axios.get(OC.generateUrl(FConfig.base_url + '/book')).then((response)=>{
+					temp.books =  response.data;
+					console.log(temp.books)
+				});
 				
 			}
 		}

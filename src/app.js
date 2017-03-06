@@ -5,11 +5,14 @@ import BookEntry from './components/BookEntry.vue'
 import App from './App.vue'
 
 
-import SummaryPage from './components/SummaryPage.vue'
+import SummaryPage from './components/Pages/SummaryPage.vue'
+import TransactionPage from './components/Pages/TransactionPage.vue'
+
 
 const router = new VueRouter({
 	routes: [
-		{ path: '', component: SummaryPage }
+		{ path: '', component: SummaryPage },
+		{name: 'book' ,path: '/book/:bookId' , component: TransactionPage}
 	]
 })
 

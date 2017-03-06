@@ -1,9 +1,18 @@
 <template>
-	<li><a>book</a></li>
+	<li><a v-on:click="viewBook()">{{book.title}}</a></li>
 </template>
 
 <script>
 	export default{
-		props: ['book']
+		props: ['book'],
+		data:{
+			path:""
+		},
+		methods: {
+			viewBook : function () {
+				this.$router.push({name : 'book', params: { bookId: this.book.id }})
+			}
+			
+		}
 	}
 </script>

@@ -11,21 +11,29 @@ namespace OCA\Financier\Db;
 
 use JsonSerializable;
 use OCP\AppFramework\Db\Entity;
+use OCP\IDBConnection;
 
-class Book extends Entity implements JsonSerializable {
+class Book extends Entity implements JsonSerializable{
 
+	/** @var  IDBConnection */
+	public $db;
 	public $id;
 	protected $description;
 	protected $title;
+	protected $lastModified;
+	protected $createdAt;
+	protected $owner;
+
 
 	public  function __construct() {
+
 		$this->addType('id','integer');
-		$this->addType('description','text');
-		$this->addType('title','text');
-
+		$this->addType('lastModified','string');
+		$this->addType('createdAt','string');
+		$this->addType('description','string');
+		$this->addType('title','string');
+		$this->addType('owner','string');
 	}
-
-
 
 	/**
 	 * Specify data which should be serialized to JSON
@@ -35,11 +43,16 @@ class Book extends Entity implements JsonSerializable {
 	 * which is a value of any type other than a resource.
 	 * @since 5.4.0
 	 */
-	function jsonSerialize() {
+	public function jsonSerialize() {
+		//var_dump(\OC::$server->getDatabaseConnection());
 		return [
 			'id' => $this->id,
-			'description' => $this->description,
-			'title' => $this->title
+			'owner' => $this->owner,
+			'createdAt' => $this->createdAt,
+			'lastModified' => $this->lastModified,
+			'descrption' => $this->description,
+			'title' => $this->title,
+
 		];
 	}
 }

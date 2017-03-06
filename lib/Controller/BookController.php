@@ -1,6 +1,9 @@
 <?php
 namespace OCA\Financier\Controller;
+
+use OCA\Financier\Service\BookService;
 use OCP\IConfig;
+use OCP\IGroupManager;
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataResponse;
@@ -11,26 +14,27 @@ class BookController extends Controller {
 
 	private $userId;
 	private $config;
+	private $bookService;
 
-	public function __construct($AppName, IRequest $request, $userId, IConfig $config){
+	public function __construct($AppName, IGroupManager $groupManager, IRequest $request, $userId, IConfig $config,BookService $bookService){
 
 		parent::__construct($AppName, $request);
 		$this->userId = $userId;
 		$this->config = $config;
+		$this->bookService = $bookService;
 	}
 
 	/**
-	 * CAUTION: the @Stuff turns off security checks; for this page no admin is
-	 *          required and no CSRF check. If you don't know what CSRF is, read
-	 *          it up in the docs or you might create a security hole. This is
-	 *          basically the only required method to add this exemption, don't
-	 *          add it to any other method if you don't exactly know what it does
-	 *
 	 * @NoAdminRequired
-	 * @NoCSRFRequired
 	 */
 	public function index() {
-		$params = ['user' => $this->userId];
-		return new TemplateResponse('financier', 'main');
+		return $this->bookService->findBooksByUser($this->userId,null,null);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 */
+	public function  create($name,$description){
+		return $this->bookService->createBook($name,$description,$this->userId);
 	}
 }

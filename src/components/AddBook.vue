@@ -11,7 +11,10 @@
 
 <script>
 
+	import  axios from 'axios'
+
 	export default{
+		props: ['bookId'],
 		data: function () {
 			return {
 				colors : ['#0079BF','#61BD4F','#F2D600','#FFAB4A','#EB5A46','#C377E0','#9ef442','#41f4e8'],
@@ -19,8 +22,14 @@
 			};
 		},
 		methods: {
+		
 			save: function () {
-				//console.log(OC.linkTo(Config.app, 'derp/derp'));
+				axios.put(OC.generateUrl(FConfig.base_url + '/book'),
+					{'description' : this.description,
+						'name' : this.title
+					}).then((result)=>{
+						this.$emit('save')
+					});
 			},
 			selectedColor: function (index) {
 				this.colorIndex = index;

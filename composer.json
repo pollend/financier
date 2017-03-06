@@ -1,0 +1,12 @@
+{
+    "name": "root/financier",
+    "authors": [
+        {
+            "name": "Michael Pollind",
+            "email": "mpollind@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/valitron": "^1.4"
+    }
+}

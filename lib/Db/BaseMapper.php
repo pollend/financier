@@ -23,4 +23,5 @@ class BaseMapper extends Mapper{
 	protected function execute($sql, array $params = [], $limit = null, $offset = null) {
 		return parent::execute($sql, $params, $limit, $offset);
 	}
+
 }

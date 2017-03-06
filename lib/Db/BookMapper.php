@@ -13,28 +13,33 @@ use OCP\IDBConnection;
 
 class BookMapper extends BaseMapper {
 	public function __construct(IDBConnection $db) {
-		parent::__construct($db, "financier_book",Book::class);
+		parent::__construct($db, "financier_books",Book::class);
 
 	}
 
 	public function insert(Entity $entity)
 	{
-		$entity->setCreatedAt(time());
-		$entity->setLastModified(time());
+		$entity->setCreatedAt(date("Y-m-d H:i:s"));
+		$entity->setLastModified(date("Y-m-d H:i:s"));
 		return parent::insert($entity);
 	}
 
 	public  function update(Entity $entity)
 	{
-		$entity->setLastModified(time());
+		$entity->setLastModified(date("Y-m-d H:i:s"));
 		return parent::update($entity);
 	}
-
+	public  function  findByUser($user,$limit = null, $offset = null)
+	{
+		$sql = 'SELECT * FROM `*PREFIX*financier_books` WHERE owner = ?';
+		return $this->findEntities($sql,[$user],$limit,$offset);
+	}
 	public  function  findAll($limit = null, $offset = null)
 	{
-		$sql = 'SELECT * FROM `' . $this->tableName . '`';
-		return $this->findEntities($sql,$limit,$offset);
+		$sql = 'SELECT * FROM `*PREFIX*financier_books`';
+		return $this->findEntities($sql,[],$limit,$offset);
 	}
+
 
 
 }

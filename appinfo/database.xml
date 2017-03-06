@@ -17,6 +17,12 @@
 				<length>4</length>
 			</field>
 			<field>
+				<name>owner</name>
+				<type>text</type>
+				<notnull>true</notnull>
+				<length>64</length>
+			</field>
+			<field>
 				<name>last_modified</name>
 				<type>datetime</type>
 				<default></default>

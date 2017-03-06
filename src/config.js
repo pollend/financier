@@ -1,3 +1,4 @@
 export default {
-	app : 'financier'
+	app : 'financier',
+	base_url: '/apps/financier'
 }
