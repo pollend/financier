@@ -37,4 +37,10 @@ class BookController extends Controller {
 	public function  create($name,$description){
 		return $this->bookService->createBook($name,$description,$this->userId);
 	}
+
+	public  function  delete($id)
+	{
+		$pass = $this->bookService->deleteBook($id,$this->userId);
+		return ["success" => $pass];
+	}
 }

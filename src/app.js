@@ -11,7 +11,7 @@ import TransactionPage from './components/Pages/TransactionPage.vue'
 
 const router = new VueRouter({
 	routes: [
-		{ path: '', component: SummaryPage },
+		{ name: 'summary',path: '', component: SummaryPage },
 		{name: 'book' ,path: '/book/:bookId' , component: TransactionPage}
 	]
 })

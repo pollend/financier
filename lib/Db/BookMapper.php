@@ -40,6 +40,4 @@ class BookMapper extends BaseMapper {
 		return $this->findEntities($sql,[],$limit,$offset);
 	}
 
-
-
 }

@@ -12,6 +12,7 @@
 <script>
 
 	import  axios from 'axios'
+	import BookService from './../service/bookService'
 
 	export default{
 		props: ['bookId'],
@@ -24,12 +25,12 @@
 		methods: {
 		
 			save: function () {
-				axios.put(OC.generateUrl(FConfig.base_url + '/book'),
-					{'description' : this.description,
-						'name' : this.title
-					}).then((result)=>{
-						this.$emit('save')
-					});
+				let temp = this
+				BookService.addBook(this.title,this.description,function (result) {
+					temp.$emit('save')
+				},function (error) {
+
+				})
 			},
 			selectedColor: function (index) {
 				this.colorIndex = index;

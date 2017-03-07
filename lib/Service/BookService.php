@@ -32,4 +32,16 @@ class BookService {
 		return $this->bookMapper->insert($book);
 
 	}
+
+	function  deleteBook($id,$user)
+	{
+		$book =  $this->bookMapper->find($id);
+		if($book.getOwner() == $user)
+		{
+			$this->bookMapper->delete($book);
+			return true;
+		}
+		return false;
+
+	}
 }

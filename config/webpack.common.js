@@ -5,8 +5,8 @@ var path = require('path');
 
 module.exports = {
 	entry: {
-		'app': './src/app.js'//,
-		// 'style': './resources/assets/sass/app.scss'
+		'app': './src/app.js',
+		'style': './src/style/style.scss'
 	},
 	resolve: {
 		modules: ["node_modules","bower_components"],
@@ -20,7 +20,7 @@ module.exports = {
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-				loader: 'file-loader?name=css/[name].[ext]'
+				loader: 'file-loader?name=./../css/[name].[ext]'
 			},
 			{
 				test: /\.css/,
@@ -39,7 +39,7 @@ module.exports = {
 	},
 
 	plugins: [
-		new ExtractTextPlugin('[name].[hash].css'),
+		new ExtractTextPlugin('./../css/[name].css'),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: ['app', 'vendor', 'polyfills']
 		})
