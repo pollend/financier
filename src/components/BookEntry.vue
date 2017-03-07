@@ -1,9 +1,9 @@
 <template>
 	<li>
 
-		<div class="app-navigation-entry-deleted">
-			<div class="app-navigation-entry-deleted-description">{{book.title}}</div>
-			<button class="app-navigation-entry-deleted-button icon-settings svg" title="Undo" v-on:click="openDropdown()"></button>
+		<div class="book-navigation-entry">
+			<a class="title" v-on:click="viewBook()">{{book.title}}</a>
+			<button class="button icon-settings svg" title="Undo" v-on:click="openDropdown()"></button>
 		</div>
 
 		<div v-if="options" class="fileActionsMenu popovermenu bubble open menu"  v-on-clickaway="closeDropdown">
@@ -16,9 +16,7 @@
 
 				</li>
 			</ul>
-
 		</div>
-
 
 	</li>
 </template>
@@ -63,3 +61,39 @@
 		}
 	}
 </script>
+
+<style>
+	.book-navigation-entry{
+		display: inline-block;
+		height: 44px;
+		width: 100%;
+	}
+	.book-navigation-entry>.title{
+		padding-left: 12px;
+		position: relative;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: inline-block;
+		width: calc(100% - 49px);
+		line-height: 44px;
+		float: left;
+
+		color: black;
+	}
+	.book-navigation-entry>.title:hover{
+		text-decoration: none;
+	}
+
+	.book-navigation-entry>.button{
+		margin: 0;
+		height: 44px;
+		width: 44px;
+		line-height: 44px;
+		border: 0;
+		display: inline-block;
+		background-color: transparent;
+		opacity: 0.5;
+	}
+
+</style>

@@ -23,7 +23,6 @@
 			};
 		},
 		methods: {
-		
 			save: function () {
 				let temp = this
 				BookService.addBook(this.title,this.description,function (result) {
@@ -34,7 +33,6 @@
 			},
 			selectedColor: function (index) {
 				this.colorIndex = index;
-
 			}
 		}
 	}

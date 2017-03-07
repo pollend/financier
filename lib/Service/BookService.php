@@ -36,7 +36,7 @@ class BookService {
 	function  deleteBook($id,$user)
 	{
 		$book =  $this->bookMapper->find($id);
-		if($book.getOwner() == $user)
+		if($book->getOwner() == $user)
 		{
 			$this->bookMapper->delete($book);
 			return true;
