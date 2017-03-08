@@ -18,16 +18,18 @@
 		</div>
 		<div class="transaction-container container-fluid">
 			<div class="transaction-header row">
+
 				<div class="col-md-2">
 					Date
 				</div>
 				<div class="col-md-2">Tags</div>
-				<div class="col-md-6">
+				<div class="col-md-5">
 					Message
 				</div>
 				<div class="col-md-2">
 					Amount
 				</div>
+				<div  class="col-md-1"></div>
 			</div>
 
 			<transaction-entry></transaction-entry>
