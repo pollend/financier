@@ -55,7 +55,7 @@
 	</table>
 
 	<table>
-		<name>*dbprefix*financier_tag</name>
+		<name>*dbprefix*financier_tags</name>
 		<declaration>
 			<field>
 				<name>id</name>
