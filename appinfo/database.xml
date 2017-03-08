@@ -66,6 +66,12 @@
 				<length>4</length>
 			</field>
 			<field>
+				<name>book_id</name>
+				<type>integer</type>
+				<length>8</length>
+				<notnull>false</notnull>
+			</field>
+			<field>
 				<name>tag</name>
 				<type>text</type>
 				<notnull>false</notnull>
@@ -139,28 +145,22 @@
 				<unsigned>true</unsigned>
 			</field>
 			<field>
+				<name>type</name>
+				<type>text</type>
+				<notnull>false</notnull>
+				<length>20</length>
+			</field>
+			<field>
 				<name>book_id</name>
 				<type>integer</type>
 				<length>8</length>
 				<notnull>false</notnull>
 			</field>
 			<field>
-				<name>description</name>
-				<type>text</type>
-				<notnull>false</notnull>
-				<length>4096</length>
-			</field>
-			<field>
 				<name>title</name>
 				<type>text</type>
 				<notnull>false</notnull>
 				<length>64</length>
-			</field>
-			<field>
-				<name>type</name>
-				<type>text</type>
-				<notnull>false</notnull>
-				<length>20</length>
 			</field>
 			<field>
 				<name>price</name>

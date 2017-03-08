@@ -2,36 +2,36 @@
 /**
  * Created by PhpStorm.
  * User: michaelpollind
- * Date: 3/3/17
- * Time: 9:32 AM
+ * Date: 3/7/17
+ * Time: 5:27 PM
  */
 
 namespace OCA\Financier\Db;
 
-
 use JsonSerializable;
 use OCP\AppFramework\Db\Entity;
-use OCP\IDBConnection;
 
-class Book extends Entity implements JsonSerializable{
+class Transaction extends Entity implements JsonSerializable{
 
 	public $id;
-	protected $description;
-	protected $title;
 	protected $lastModified;
 	protected $createdAt;
-	protected $owner;
+	protected $type;
+	protected $bookId;
+	protected $title;
+	protected $price;
 
 
-	public  function __construct() {
-
+	function __construct() {
 		$this->addType('id','integer');
 		$this->addType('lastModified','string');
 		$this->addType('createdAt','string');
-		$this->addType('description','string');
+		$this->addType('type','string');
+		$this->addType('bookId','integer');
 		$this->addType('title','string');
-		$this->addType('owner','string');
+		$this->addType('price','float');
 	}
+
 
 	/**
 	 * Specify data which should be serialized to JSON
@@ -41,16 +41,15 @@ class Book extends Entity implements JsonSerializable{
 	 * which is a value of any type other than a resource.
 	 * @since 5.4.0
 	 */
-	public function jsonSerialize() {
-		//var_dump(\OC::$server->getDatabaseConnection());
+	function jsonSerialize() {
 		return [
-			'id' => $this->id,
-			'owner' => $this->owner,
-			'createdAt' => $this->createdAt,
-			'lastModified' => $this->lastModified,
-			'descrption' => $this->description,
-			'title' => $this->title,
-
+			"id" => $this->id,
+			"lastModified" => $this->lastModified,
+			"createdAt" => $this->createdAt,
+			"type" => $this->type,
+			"bookId" => $this->bookId,
+			"title" => $this->title,
+			"price" => $this->price
 		];
 	}
 }
