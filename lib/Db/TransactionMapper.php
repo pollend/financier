@@ -32,11 +32,10 @@ class TransactionMapper extends BaseMapper
 		return parent::update($entity);
 	}
 
-	public  function getTransactions(Book $book,$limit = null, $offset = null)
+	public function getTransactions(Book $book,$limit = null, $offset = null)
 	{
 		$sql = 'SELECT * FROM `*PREFIX*financier_transactions` WHERE book_id = ?';
 		return $this->findEntities($sql,[$book->id],$limit,$offset);
-
 	}
 
 }

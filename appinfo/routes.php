@@ -15,8 +15,8 @@ $app->registerRoutes($this,[
 
 		['name' => 'transaction#index', 'url' => '/book/{bookId}/transaction', 'verb' => 'GET'],
 		['name' => 'transaction#put', 'url' => '/book/{bookId}/transaction', 'verb' => 'PUT'], // creates
-		['name' => 'transaction#patch', 'url' => '/book/{bookId}/transaction/{id}', 'verb' => 'PATCH'], //modify transaction row
-		['name' => 'transaction#delete', 'url' => '/book/{bookId}/transaction/{id}', 'verb' => 'DELETE']
+		['name' => 'transaction#patch', 'url' => '/book/{bookId}/transaction/{transactionId}', 'verb' => 'PATCH'], //modify transaction row
+		['name' => 'transaction#delete', 'url' => '/book/{bookId}/transaction/{transactionId}', 'verb' => 'DELETE']
 		//['name' => 'page#do_echo', 'url' => '/echo', 'verb' => 'POST'],
     ]
 ]);

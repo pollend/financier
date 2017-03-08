@@ -1,6 +1,7 @@
 <?php
 namespace OCA\Financier\Controller;
 
+use lib\Service\PermissionService;
 use OCA\Financier\Service\BookService;
 use OCP\IConfig;
 use OCP\IGroupManager;
@@ -15,13 +16,15 @@ class BookController extends Controller {
 	private $userId;
 	private $config;
 	private $bookService;
+	private $permissionService;
 
-	public function __construct($AppName, IGroupManager $groupManager, IRequest $request, $userId, IConfig $config,BookService $bookService){
+	public function __construct($AppName, IGroupManager $groupManager, IRequest $request, $userId, IConfig $config,BookService $bookService,PermissionService $permissionService){
 
 		parent::__construct($AppName, $request);
 		$this->userId = $userId;
 		$this->config = $config;
 		$this->bookService = $bookService;
+		$this->permissionService = $permissionService;
 	}
 
 	/**
@@ -40,7 +43,18 @@ class BookController extends Controller {
 
 	public  function  delete($id)
 	{
-		$pass = $this->bookService->deleteBook($id,$this->userId);
-		return ["success" => $pass];
+		$book = $this->bookService->getbook($id);
+		if($book == null)
+		{
+			return ['result' => false];
+		}
+		if($book->getOwner() == $this->userId)
+		{
+			$pass = $this->bookService->deleteBook($book);
+			return ["success" => true];
+
+		}
+		return ["success" => false];
+
 	}
 }

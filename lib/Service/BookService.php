@@ -11,18 +11,29 @@ use OCA\Financier\Db\BookMapper;
 class BookService {
 	private $bookMapper;
 
-	function __construct(BookMapper $bookMapper, $userId) {
+	function __construct(BookMapper $bookMapper) {
 		$this->bookMapper = $bookMapper;
+	}
+
+	/**
+	 * @param $id
+	 * @return Book
+	 */
+	function  getbook($id) : Book
+	{
+		return $this->bookMapper->find($id);
 	}
 
 	function findAllBooks($limit = null,$offset = null)
 	{
 		return $this->bookMapper->findAll($limit,$offset);
 	}
+
 	function findBooksByUser($userid,$limit = null,$offset = null)
 	{
 		return $this->bookMapper->findByUser($userid,$limit,$offset);
 	}
+
 	function createBook($name,$description,$owner)
 	{
 		$book = new Book();
@@ -33,15 +44,9 @@ class BookService {
 
 	}
 
-	function  deleteBook($id,$user)
+	function  deleteBook(Book $book)
 	{
-		$book =  $this->bookMapper->find($id);
-		if($book->getOwner() == $user)
-		{
-			$this->bookMapper->delete($book);
-			return true;
-		}
-		return false;
-
+		$this->bookMapper->delete($book);
+		return true;
 	}
 }

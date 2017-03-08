@@ -33,6 +33,7 @@ class Transaction extends Entity implements JsonSerializable{
 	}
 
 
+
 	/**
 	 * Specify data which should be serialized to JSON
 	 *
@@ -42,6 +43,9 @@ class Transaction extends Entity implements JsonSerializable{
 	 * @since 5.4.0
 	 */
 	function jsonSerialize() {
+
+		//\OC::$server->getDatabaseConnection()
+
 		return [
 			"id" => $this->id,
 			"lastModified" => $this->lastModified,

@@ -1,6 +1,8 @@
 <?php  namespace OCA\Financier\Service;
+use lib\Service\PermissionService;
 use OCA\Financier\Db\Book;
 use OCA\Financier\Db\BookMapper;
+use OCA\Financier\Db\Transaction;
 use OCA\Financier\Db\TransactionMapper;
 
 /**
@@ -12,19 +14,40 @@ use OCA\Financier\Db\TransactionMapper;
 
 
 class TransactionService {
+
 	protected $transactionMapper;
 	protected $bookMapper;
-	function __construct( TransactionMapper $transactionMapper, BookMapper $bookMapper) {
+	protected $permissionService;
+
+	function __construct( TransactionMapper $transactionMapper,PermissionService $permssionService, BookMapper $bookMapper) {
 		$this->transactionMapper = $transactionMapper;
 		$this->bookMapper = $bookMapper;
+		$this->permissionService = $permssionService;
 	}
 
-	function findTransactions($bookId)
+	function createTransaction($type,Book $book,$title,$price) : Transaction
 	{
-		/** @var Book $book */
-		$book = $this->bookMapper->find($bookId);
-		if($book == null)
-			return null;
-		return $this->transactionMapper->getTransactions($book);
+		$transaction = new Transaction();
+		$transaction->setType($type);
+		$transaction->setBookId($book->id);
+		$transaction->setTitle($title);
+		$transaction->setPrice($price);
+		return $transaction;
+	}
+
+	function  getTransaction($transactionId)
+	{
+		return $this->transactionMapper->find($transactionId);
+	}
+
+	function findTransactions(Book $book,$limit = null, $offset = null)
+	{
+		return $this->transactionMapper->getTransactions($book,$limit, $offset );
+	}
+
+	function  deleteTransaction(Transaction $transaction)
+	{
+		$this->transactionMapper->delete($transaction);
+
 	}
 }
